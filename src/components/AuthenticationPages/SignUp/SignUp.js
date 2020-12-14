@@ -40,7 +40,7 @@ function SignUp() {
             // value={values.amount}
             // onChange={handleChange('amount')}
             startAdornment={<InputAdornment position="start"><AccountCircle/></InputAdornment>}
-            labelWidth={60}
+            labelWidth={40}
           />
         </FormControl>
         <FormControl  className={classes.margin} variant="outlined">
@@ -50,7 +50,7 @@ function SignUp() {
             // value={values.amount}
             // onChange={handleChange('amount')}
             startAdornment={<InputAdornment position="start"><LockIcon/></InputAdornment>}
-            labelWidth={60}
+            labelWidth={70}
           />
         </FormControl>
         <FormControl  className={classes.margin} variant="outlined">
@@ -60,7 +60,7 @@ function SignUp() {
             // value={values.amount}
             // onChange={handleChange('amount')}
             startAdornment={<InputAdornment position="start"><LockIcon/></InputAdornment>}
-            labelWidth={60}
+            labelWidth={95}
           />
         </FormControl>
         <Button

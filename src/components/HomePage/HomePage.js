@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     display: 'flex',
+    width: '100%'
   },
   usersSection: {
     display: 'flex',
@@ -106,6 +107,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
+    overflowX: 'hidden',
     padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -246,15 +248,16 @@ export default function PersistentDrawerLeft() {
             </ListItem>
         </List>
       </Drawer>
-      <main
+      <div 
         className={clsx(classes.content, {
           [classes.contentShift]: open,
         })}
       >
         <div className={classes.drawerHeader} />
-        <Typography paragraph>
-         {RenderAppSection(appSection)}
-        </Typography>
+        {RenderAppSection(appSection)}
+        {/* <Typography paragraph> */}
+         
+        {/* </Typography> */}
         {/* <Typography paragraph>
           Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
           facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
@@ -266,7 +269,7 @@ export default function PersistentDrawerLeft() {
           nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
           accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
         </Typography> */}
-      </main>
+      </div>
     </div>
   );
 }
