@@ -17,9 +17,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-
 import purple from '@material-ui/core/colors/purple';
-import GlassesIcon from './GlassesIcon';
+import {Add} from '../Sections/Add';
 import SearchIcon from '@material-ui/icons/Search';
 import SettingsIcon from '@material-ui/icons/Settings';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
@@ -31,6 +30,15 @@ import BusinessIcon from '@material-ui/icons/Business';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
+  listItemDisable: {
+    'MuiListItemIcon-root': {
+      pointerEvents: 'none',
+    },
+    'MuiListItemIcon-alignItemsFlexStart': {
+      pointerEvents: 'none',
+
+    }
+  },
   root: {
     display: 'flex',
   },
@@ -39,6 +47,19 @@ const useStyles = makeStyles((theme) => ({
     height: '48px',
     alignItems: 'center',
     justifyContent: 'space-between',
+    flexDirection: 'row',
+    backgroundColor: '#f5f5f5',
+    paddingTop: '8px',
+    paddingBottom: '8px',
+    paddingLeft: '16px',
+    paddingRight: '16px'
+  
+  },
+  orgSection: {
+    display: 'flex',
+    height: '48px',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     flexDirection: 'row',
     backgroundColor: '#f5f5f5',
     paddingTop: '8px',
@@ -107,7 +128,7 @@ function RenderAppSection(appSection) {
       return 'Search'
       break;
     case 'Add':
-      return 'Add';
+      return <Add/>
       break;
     case 'Analysis':
       return 'Analysis'
@@ -137,6 +158,8 @@ export default function PersistentDrawerLeft() {
     console.log(e);
     console.log(e.target);
     console.log(e.target.textContent);
+    console.log(e.target.id);
+    console.log(e.target.key);
     setAppSection(e.target.textContent);
   };
 
@@ -190,7 +213,7 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </div>
         <Divider />
-        <div className={classes.usersSection}>
+        <div className={classes.orgSection}>
           <IconButton onClick={(e) => {setAppSection('Organization')}} ><BusinessIcon /></IconButton>
           El Salvador Glasses
         </div>
@@ -203,7 +226,7 @@ export default function PersistentDrawerLeft() {
         <Divider />
         <List>
             <ListItem button key='Search' onClick={handleSidePannelClick}>
-              <ListItemIcon><SearchIcon /></ListItemIcon>
+              <ListItemIcon className={classes.listItemDisable} ><SearchIcon /></ListItemIcon>
               <ListItemText primary='Search' onClick={handleSidePannelClick}/>
             </ListItem>
             <ListItem button key='Add' onClick={handleSidePannelClick}>
@@ -211,15 +234,15 @@ export default function PersistentDrawerLeft() {
               <ListItemText primary='Add' />
             </ListItem>
             <ListItem button key='Analysis' onClick={handleSidePannelClick}>
-              <ListItemIcon><AssessmentIcon /></ListItemIcon>
+              <ListItemIcon ><AssessmentIcon /></ListItemIcon>
               <ListItemText primary='Analysis' />
             </ListItem>
         </List>
         <Divider />
         <List>
             <ListItem button key='Admin Settings' onClick={handleSidePannelClick}>
-              <ListItemIcon><SettingsIcon /></ListItemIcon>
-              <ListItemText primary='Admin Settings' />
+              <ListItemIcon disabled ><SettingsIcon /></ListItemIcon>
+              <ListItemText disabled primary='Admin Settings' />
             </ListItem>
         </List>
       </Drawer>
