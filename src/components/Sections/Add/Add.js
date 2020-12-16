@@ -1,5 +1,6 @@
 import './Add.css';
 import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -100,6 +101,77 @@ function Add() {
           <option value={true}>Yes</option>
           <option value={false}>No</option>
         </Select>
+      </FormControl>
+      <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel htmlFor="outlined-Gender-native-simple">Transition Lens</InputLabel>
+        <Select
+          native
+          // value={state.age}
+          // onChange={handleChange}
+          label="transition lens"
+          inputProps={{
+            name: 'transition lens',
+            id: 'outlined-transition-lens-native-simple',
+          }}
+        >
+          <option aria-label="None" value="" />
+          <option value={true}>Yes</option>
+          <option value={false}>No</option>
+        </Select>
+      </FormControl>
+      <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel htmlFor="outlined-Gender-native-simple">Transition Lens</InputLabel>
+        <Select
+          native
+          // value={state.age}
+          // onChange={handleChange}
+          label="transition lens"
+          inputProps={{
+            name: 'transition lens',
+            id: 'outlined-transition-lens-native-simple',
+          }}
+        >
+          <option aria-label="None" value="" />
+          <option value={true}>Yes</option>
+          <option value={false}>No</option>
+        </Select>
+      </FormControl>
+      <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel htmlFor="outlined-Gender-native-simple">Transition Lens</InputLabel>
+        <Select
+          native
+          // value={state.age}
+          // onChange={handleChange}
+          label="transition lens"
+          inputProps={{
+            name: 'transition lens',
+            id: 'outlined-transition-lens-native-simple',
+          }}
+        >
+          <option aria-label="None" value="" />
+          <option value={true}>Yes</option>
+          <option value={false}>No</option>
+        </Select>
+      </FormControl>
+      <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel htmlFor="outlined-Gender-native-simple">Transition Lens</InputLabel>
+        <Select
+          native
+          // value={state.age}
+          // onChange={handleChange}
+          label="transition lens"
+          inputProps={{
+            name: 'transition lens',
+            id: 'outlined-transition-lens-native-simple',
+          }}
+        >
+          <option aria-label="None" value="" />
+          <option value={true}>Yes</option>
+          <option value={false}>No</option>
+        </Select>
+      </FormControl>
+      <FormControl variant="outlined" className={classes.formControl}>
+      <Button variant="contained" color='primary'>Add to the STock</Button>
       </FormControl>
     </div>
   );
