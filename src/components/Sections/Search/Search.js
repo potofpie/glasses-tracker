@@ -1,4 +1,4 @@
-import './Add.css';
+import './Search.css';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -31,15 +31,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Add() {
+function Search() {
   const classes = useStyles();
   return (
     <div className="Add">
         <div className="Add-title">
-          Add a new pair of glasses!
+          Search for the glasses!
         </div>
-      <TextField style={{ width: '50%', margin: '10px' }} id="outlined-basic" label="SKU *" variant="outlined" />
-      <Button style={{ width: '50%', margin: '10px' }} variant='contained'>Generate</Button>
+      {/* <TextField style={{ width: '50%', margin: '10px' }} id="outlined-basic" label="SKU *" variant="outlined" /> */}
+      {/* <Button style={{ width: '50%', margin: '10px' }} variant='contained'>Generate</Button> */}
       <Autocomplete
         // value={value}
         // onChange={(event, newValue) => {
@@ -232,11 +232,11 @@ function Add() {
 
       </div>
       {/* <div style={{display: 'flex', width: '50%', margin: '10px' }} > */}
-      <Button style={{ width: '50%', margin: '10px' }} color='primary' variant='contained' >Save </Button>
-      <Button style={{ width: '50%', margin: '10px' }} color='secondary' variant='contained' >Cancel</Button>
+      <Button style={{ width: '50%', margin: '10px' }} color='primary' variant='contained' >Search</Button>
+      {/* <Button style={{ width: '50%', margin: '10px' }} color='secondary' variant='contained' >Cancel</Button> */}
       {/* </div> */}
     </div>
   );
 }
 
-export default Add;
+export default Search;

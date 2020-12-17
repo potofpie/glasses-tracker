@@ -1,6 +1,7 @@
 // import logo from '../../resources/glasses.svg';
 import './App.css';
 import  { HomePage } from '../HomePage';
+import  { NewHomePage } from '../NewHomePage';
 import  { Login } from '../AuthenticationPages/Login';
 import  { SignUp } from '../AuthenticationPages/SignUp';
 
@@ -22,6 +23,9 @@ function App() {
             <Login/>
           </Route>
           <Route path="/">
+            <NewHomePage/>
+          </Route>
+          <Route path="/old">
             <HomePage/>
           </Route>
         </Switch>
