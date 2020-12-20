@@ -4,6 +4,7 @@ import  { HomePage } from '../HomePage';
 import  { NewHomePage } from '../NewHomePage';
 import  { Login } from '../AuthenticationPages/Login';
 import  { SignUp } from '../AuthenticationPages/SignUp';
+import AuthProvider from '../../utils/provider/AuthProvider'
 
 import {
   BrowserRouter as Router,
@@ -12,24 +13,18 @@ import {
 } from "react-router-dom";
 
 function App() {
+  const user = null;
   return (
     <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/signup">
-            <SignUp/>
-          </Route>
-          <Route path="/login">
-            <Login/>
-          </Route>
-          <Route path="/">
-            <NewHomePage/>
-          </Route>
-          <Route path="/old">
-            <HomePage/>
-          </Route>
-        </Switch>
-    </Router>
+     <AuthProvider>
+        <Router>
+          <Switch>
+            <Route exact path="/signup" component={SignUp}/>
+            <Route exact path="/login" component={Login}/>
+            <Route path="/" component={NewHomePage}/>
+          </Switch>
+      </Router>
+    </AuthProvider>
     </div>
   );
 }

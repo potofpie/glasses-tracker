@@ -13,6 +13,9 @@ import GlassesIcon from '../../CustomIcons/GlassesIcon';
 import GoogleIcon from '../../CustomIcons/GoogleIcon';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
+import React, {useState} from 'react';
+import firebase from '../.././../utils/firebase';
+
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -24,10 +27,18 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function Login() {
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
   const classes = useStyles();
+
+  async function login(){
+    try {
+      firebase.login(email,password)
+    } catch(error){
+      alert(error.message)
+    }
+  }
   return (
-
-
     <div className="Login">
       <div className="Login-card ">
       <GlassesIcon size='100px' />
@@ -37,7 +48,7 @@ function Login() {
           <OutlinedInput
             id="outlined-adornment-amount"
             // value={values.amount}
-            // onChange={handleChange('amount')}
+            onChange={(e) => {setEmail(e.target.value)}}
             startAdornment={<InputAdornment position="start"><AccountCircle/></InputAdornment>}
             labelWidth={40}
           />
@@ -48,7 +59,7 @@ function Login() {
             id="outlined-adornment-amount"
             type='password'
             // value={values.amount}
-            // onChange={handleChange('amount')}
+            onChange={(e) => {setPassword(e.target.value)}}
             startAdornment={<InputAdornment position="start"><LockIcon/></InputAdornment>}
             labelWidth={70}
           />

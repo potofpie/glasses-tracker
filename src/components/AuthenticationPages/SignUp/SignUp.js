@@ -13,6 +13,8 @@ import GlassesIcon from '../../CustomIcons/GlassesIcon';
 import GoogleIcon from '../../CustomIcons/GoogleIcon';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
+import React, {useState} from 'react';
+import firebase from '../.././../utils/firebase';
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -25,8 +27,21 @@ const useStyles = makeStyles((theme) => ({
 
 function SignUp() {
   const classes = useStyles();
-  return (
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [rePassword, setRePassword] = useState()
 
+  async function signup(){
+    try {
+      console.log({email,password})
+      firebase.signup(email,password)
+    } catch(error){
+      alert(error.message)
+    }
+  }
+
+
+  return (
 
     <div className="SignUp">
       <div className="SignUp-card ">
@@ -38,7 +53,7 @@ function SignUp() {
           <OutlinedInput
             id="outlined-adornment-amount"
             // value={values.amount}
-            // onChange={handleChange('amount')}
+            onChange={(e) => {setEmail(e.target.value)}}
             startAdornment={<InputAdornment position="start"><AccountCircle/></InputAdornment>}
             labelWidth={40}
           />
@@ -48,7 +63,7 @@ function SignUp() {
           <OutlinedInput type='password'
             id="outlined-adornment-amount"
             // value={values.amount}
-            // onChange={handleChange('amount')}
+            onChange={(e) => {setPassword(e.target.value)}}
             startAdornment={<InputAdornment position="start"><LockIcon/></InputAdornment>}
             labelWidth={70}
           />
@@ -58,7 +73,7 @@ function SignUp() {
           <OutlinedInput type='password'
             id="outlined-adornment-amount"
             // value={values.amount}
-            // onChange={handleChange('amount')}
+            onChange={(e) => {setRePassword(e.target.value)}}
             startAdornment={<InputAdornment position="start"><LockIcon/></InputAdornment>}
             labelWidth={95}
           />
@@ -74,6 +89,7 @@ function SignUp() {
         <Button
         variant="contained"
         color="default"
+        onClick={(e) => {console.log('sdcsdcsd')}}
         className={classes.button}
         startIcon={<GoogleIcon size='20px' />}
       >

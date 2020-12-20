@@ -18,7 +18,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import purple from '@material-ui/core/colors/purple';
-import {Add} from '../Sections/Add';
+import {Add} from '../NewHomePage/Sections/Add';
 import SearchIcon from '@material-ui/icons/Search';
 import SettingsIcon from '@material-ui/icons/Settings';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
