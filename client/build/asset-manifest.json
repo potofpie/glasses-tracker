@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.85f85933.chunk.css",
+    "main.js": "/static/js/main.b2b020b9.chunk.js",
+    "main.js.map": "/static/js/main.b2b020b9.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d935e2c8.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d935e2c8.js.map",
+    "static/js/2.9bb3b400.chunk.js": "/static/js/2.9bb3b400.chunk.js",
+    "static/js/2.9bb3b400.chunk.js.map": "/static/js/2.9bb3b400.chunk.js.map",
+    "static/js/3.fb4e2f52.chunk.js": "/static/js/3.fb4e2f52.chunk.js",
+    "static/js/3.fb4e2f52.chunk.js.map": "/static/js/3.fb4e2f52.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.85f85933.chunk.css.map": "/static/css/main.85f85933.chunk.css.map",
+    "static/js/2.9bb3b400.chunk.js.LICENSE.txt": "/static/js/2.9bb3b400.chunk.js.LICENSE.txt",
+    "static/media/G_Logo.0ff45cb6.png": "/static/media/G_Logo.0ff45cb6.png",
+    "static/media/glasses.3d8efdfd.svg": "/static/media/glasses.3d8efdfd.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d935e2c8.js",
+    "static/js/2.9bb3b400.chunk.js",
+    "static/css/main.85f85933.chunk.css",
+    "static/js/main.b2b020b9.chunk.js"
+  ]
+}
