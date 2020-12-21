@@ -1,4 +1,4 @@
-import './SignUp.css';
+import './Reset.css';
 import Typography from '@material-ui/core/Typography';
 // import TextField from '@material-ui/core/TextField';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -25,16 +25,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function SignUp() {
+function Reset() {
   const classes = useStyles();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [rePassword, setRePassword] = useState()
 
-  // async function signup(){
+  // async function Reset(){
   //   try {
   //     console.log({email,password})
-  //     firebase.signup(email,password)
+  //     firebase.Reset(email,password)
   //   } catch(error){
   //     alert(error.message)
   //   }
@@ -43,8 +43,8 @@ function SignUp() {
 
   return (
 
-    <div className="SignUp">
-      <div className="SignUp-card ">
+    <div className="Reset">
+      <div className="Reset-card ">
       <GlassesIcon size='100px' />
       <Typography variant="h4" color='textPrimary'>Glasses Tracker</Typography>
       {/* <Typography variant="caption text" color='textPrimary'>Sign up to get started!</Typography> */}
@@ -58,7 +58,7 @@ function SignUp() {
             labelWidth={40}
           />
         </FormControl>
-        <FormControl  className={classes.margin} variant="outlined">
+        {/* <FormControl  className={classes.margin} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-amount" >Password</InputLabel>
           <OutlinedInput type='password'
             id="outlined-adornment-amount"
@@ -77,27 +77,17 @@ function SignUp() {
             startAdornment={<InputAdornment position="start"><LockIcon/></InputAdornment>}
             labelWidth={95}
           />
-        </FormControl>
+        </FormControl> */}
         <Button
         variant="contained"
         color="default"
         className={classes.button}
         // startIcon={<GoogleIcon size='20px' />}
       >
-        Sign Up</Button>
-        OR
-        <Button
-        variant="contained"
-        color="default"
-        onClick={(e) => {console.log('sdcsdcsd')}}
-        className={classes.button}
-        startIcon={<GoogleIcon size='20px' />}
-      >
-      
-        Sign in with google</Button>
+        Reset Password</Button>
       <Typography variant="caption text" color='textPrimary'>
         <Link href="#" >
-          I already have an account! 
+          Nevermind!
         </Link>
       </Typography>
       </div>
@@ -106,4 +96,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default Reset;

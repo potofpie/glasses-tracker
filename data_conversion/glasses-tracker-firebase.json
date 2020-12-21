@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "glasses-tracker",
+  "private_key_id": "eb8bea7feba8ec95753c84301955263328e3a9ee",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCtrM/oxW/vqln+\nZ1dw/ylaag8XBOK9aPYnm/4wdZSc573bobew64dSVoCNhdgTpAbUQAi28ccw+R7L\naMwrHhZnSCRYzvwwFJFsfcF6pvUFm6Mtnz4oXW5qwz/gezTptFXGjX85QXNsjWo6\nzDP2FM/P6p2TRTQeMtW69bpfBo8ZWPE2oEYXewKoYteoGeOSYXXFdBzoy38wapK5\n1+Ni02be6f55Pci3KZsYRllktrsjznpK9qmn1dK18W3qbUXv3fEycuae6KxzjENe\nRgy7TQEu/08Kr2fd+5BcNXvpzNJaExcHdGrjfHBlBwAjpRTNiT3Y+MljXS8Wt+4g\nq9eZJ7/vAgMBAAECggEAAgCJfwnzoeQpWGzxjZxrah7p4J6OTJeuqsM6GW3pkit7\nvVHub6wvaawUnE0MMiHEcGLylsVPwglFKRwiqmaU5Ijo3ls4fgdmq8UBW3wcO/3Q\n0kBRM57sHG/2xww0jnMlP/42lr7h6UDyFg5vlOklgiSWv3FfSe/VFewqQ1ksgiLG\n75kOaD51KitcR85duK7g6GylWxcNNjiyT3Obi4eVKQQkmnkM7wuJIQOsIkgTnh1A\nNq/l1y6a90Og7F54mUIr1Lh00mp/sarrU/gRzoZnf+MdMho5PX1ReOKGYdvgY83L\n2TEvK1q38HO94VQaNkhgm3bnH53xqKp1kQHqZzEAVQKBgQDzhyHyuJSxjJeVn9Or\nivhxrzzcCIbtc+p/hxhZiuSG+FdyQ+lkVqNMc591NO4iX5hkF4HZzfOeKwoUM6o6\nd/iCruwj53FFW2VSKF9htjwfI9I0Z4s4H2f99KEdAd54Hj1J6C61dMGKXI/ADdGV\ncl7/U4e4DhBcjyVG2xf1OnPvGwKBgQC2kdjL5iVfotEJDKEwuh5wPwdhfrX7MfE9\nVa1pRH2iiR3xfBjJUk2pGUh4yYynnHDvbIO2PbFcZsjKYb8os3EtJxfF+p6Anvm1\nGlHR9I9vPqSFIbqE5IH2+UkOTKaaC6fV76cssbDNlAKS6O9E8ZVbi+BZgE+b8BFN\n07sNMq87vQKBgQCDeL/OHvI/jExFvdxzbvpDvbxYec4GIZ9Gq/NsW/yWFTp4eMtm\nnRNZ8c3zY9jv+7X0y3AR2wsbp9awI1hSanRicPcRRyCyte3UVfFwegapNRiFrCTP\n7rygsNHOLDUjmgeyf8O/uMHH5cLBh3RPf0hkBX9u0UDqB2mzgBLGFIGEYwKBgHfH\nZjoYC4scMhLC03o5kcDIyVngnRpp4MEB1hzLT7X0Sc3mQgjLU6JOsSp16S8KR1n9\nkshc32ElGjUVPipA2E7sZ/9+9sCiDGgSFX4u+m/c5GloAIwxs0bKtHCKP3+vh/Sn\nH8IF7l5h7fJemqRb70a5lX6C3TgMn/20nPMCvs7tAoGBAMGWuCaP/8yQJl1qGnt5\nCBPj1XAg+SkIp3VP7AfGUwzIGwyEPLkuVO/nLi1lhjp8wo5bxquT1W/++bdn9gQk\ngRJlHLNv+D3uP9+L2iisiRKYlkY6MLFAu86tAHshZnx9PhBJbJWq7URVyBrXIdYg\njjewVxJEJgxb3CwFKcOPyvIL\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-yu2m1@glasses-tracker.iam.gserviceaccount.com",
+  "client_id": "116364635885030091948",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-yu2m1%40glasses-tracker.iam.gserviceaccount.com"
+}

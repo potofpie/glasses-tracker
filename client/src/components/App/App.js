@@ -1,11 +1,8 @@
-// import logo from '../../resources/glasses.svg';
 import './App.css';
 import  { HomePage } from '../HomePage';
-import  { NewHomePage } from '../NewHomePage';
 import  { Login } from '../AuthenticationPages/Login';
 import  { SignUp } from '../AuthenticationPages/SignUp';
-import AuthProvider from '../../utils/provider/AuthProvider'
-
+import  { Reset } from '../AuthenticationPages/Reset';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,18 +10,17 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const user = null;
+  // const user = null;
   return (
     <div className="App">
-     <AuthProvider>
         <Router>
           <Switch>
             <Route exact path="/signup" component={SignUp}/>
             <Route exact path="/login" component={Login}/>
-            <Route path="/" component={NewHomePage}/>
+            <Route exact path="/reset" component={Reset}/>
+            <Route path="/" component={HomePage}/>
           </Switch>
       </Router>
-    </AuthProvider>
     </div>
   );
 }

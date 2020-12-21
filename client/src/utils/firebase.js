@@ -14,25 +14,7 @@ export const firebaseConfig = {
   };
 
 
-class Firebase {
-  constructor(){
-    firebase.initializeApp(firebaseConfig);
-    this.auth = firebase.auth();
-    this.db = firebase.firestore();
-  }
-  login(email, password){
-    return this.auth.signInWithEmailAndPassword(email, password)
-  }
-  logout(email, password){
-    return this.auth.signOut()
-  }
-  async signup(email, password){
-    await this.auth.createUserWithEmailAndPassword(email, password)
-    // return this.auth.createUser.updateProfile({
-    //   displayName: name
-    // });
-
-  }
+module.exports = {
+  auth : firebase.auth(),
+  db : firebase.firestore()
 }
-
-export default new Firebase();

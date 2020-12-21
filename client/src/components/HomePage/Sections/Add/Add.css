@@ -10,11 +10,26 @@
 }
 
 .Add-title {
-  /* width: 50%; */
+  margin: 15px; 
   font-size: 20px;
 }
 
 .Add-field {
   width: 50%;
   margin: 15px; 
+}
+
+
+.Add-ODOS-field {
+  width: 50%;
+  margin: 10px; 
+  
+}
+
+
+.Add-ODOS{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 5px;
 }

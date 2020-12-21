@@ -1,9 +1,8 @@
-import glasses from '../../resources/glasses.svg';
-// import SvgIcon from '@material-ui/core/SvgIcon';
+import Textile from '../../resources/textile.svg';
 
-function GlassesIcon(props) {
+function TextileIcon(props) {
   return (
-      <img  alt='glasses' src={glasses} style={{color: 'white', 
+      <img  alt='glasses' src={Textile} style={{color: 'white', 
                                 //  margin : '10px', 
                                  width: 
                                  props.size, 
@@ -12,4 +11,4 @@ function GlassesIcon(props) {
   );
 }
 
-export default GlassesIcon;
+export default TextileIcon;

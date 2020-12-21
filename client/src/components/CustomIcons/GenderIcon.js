@@ -1,9 +1,9 @@
-import glasses from '../../resources/glasses.svg';
+import Gender from '../../resources/gender.svg';
 // import SvgIcon from '@material-ui/core/SvgIcon';
 
-function GlassesIcon(props) {
+function GenderIcon(props) {
   return (
-      <img  alt='glasses' src={glasses} style={{color: 'white', 
+      <img  alt='glasses' src={Gender} style={{color: 'white', 
                                 //  margin : '10px', 
                                  width: 
                                  props.size, 
@@ -12,4 +12,4 @@ function GlassesIcon(props) {
   );
 }
 
-export default GlassesIcon;
+export default GenderIcon;

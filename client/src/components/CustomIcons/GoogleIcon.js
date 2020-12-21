@@ -3,7 +3,7 @@ import googleIcon from '../../resources/G_Logo.png';
 
 function GlassesIcon(props) {
   return (
-      <img src={googleIcon} style={{color: 'white', 
+      <img alt='googleIcon'  src={googleIcon} style={{color: 'white', 
                                 //  margin : '10px', 
                                  width: 
                                  props.size, 

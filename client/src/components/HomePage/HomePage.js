@@ -1,135 +1,44 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import purple from '@material-ui/core/colors/purple';
-import {Add} from '../NewHomePage/Sections/Add';
-import SearchIcon from '@material-ui/icons/Search';
-import SettingsIcon from '@material-ui/icons/Settings';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import AssessmentIcon from '@material-ui/icons/Assessment';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import BusinessIcon from '@material-ui/icons/Business';
+import { 
+        useTheme,
+        Drawer,
+        AppBar,
+        List,
+        Typography,
+        Divider,
+        IconButton,
+        CssBaseline,
+        Toolbar,
+        ListItem,
+        ListItemIcon,
+        ListItemText,
+        Avatar,
+        Select
+      } from '@material-ui/core';
 
-const drawerWidth = 240;
+import {
+        ChevronLeft,
+        ChevronRight,
+        Assessment,
+        Menu,
+        Search,
+        AddCircleOutline,
+        Settings
+      } from '@material-ui/icons'
 
-const useStyles = makeStyles((theme) => ({
-  listItemDisable: {
-    'MuiListItemIcon-root': {
-      pointerEvents: 'none',
-    },
-    'MuiListItemIcon-alignItemsFlexStart': {
-      pointerEvents: 'none',
+import {Add} from './Sections/Add';
+import {Search as SearchTab} from './Sections/Search';
+import {useStyles} from './css';
 
-    }
-  },
-  root: {
-    display: 'flex',
-    width: '100%'
-  },
-  usersSection: {
-    display: 'flex',
-    height: '48px',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    backgroundColor: '#f5f5f5',
-    paddingTop: '8px',
-    paddingBottom: '8px',
-    paddingLeft: '16px',
-    paddingRight: '16px'
-  
-  },
-  orgSection: {
-    display: 'flex',
-    height: '48px',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    flexDirection: 'row',
-    backgroundColor: '#f5f5f5',
-    paddingTop: '8px',
-    paddingBottom: '8px',
-    paddingLeft: '16px',
-    paddingRight: '16px'
-  
-  },
-  appBar: {
-    backgroundColor: purple[500],
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-  },
-  content: {
-    flex: 1,
-    flexGrow: 1,
-    overflowX: 'hidden',
-    // padding: theme.spacing(3),
-    paddingTop: '64px',
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  },
-}));
+      
+
+
 
 function RenderAppSection(appSection) {
   switch (appSection) {
     case 'Search':
-      return 'Search'
+      return <SearchTab/>
       break;
     case 'Add':
       return <Add/>
@@ -152,18 +61,22 @@ function RenderAppSection(appSection) {
   }
 }
 
-export default function PersistentDrawerLeft() {
+const drawerWidth = 240;
+
+
+
+export default function NewHomePage() {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const [appSection, setAppSection] = React.useState('Search');
+  const [open, setOpen] = React.useState(true);
+  const [appSection, setAppSection] = React.useState('Add');
 
   const handleSidePannelClick = (e) => {
-    console.log(e);
-    console.log(e.target);
-    console.log(e.target.textContent);
-    console.log(e.target.id);
-    console.log(e.target.key);
+    // console.log(e);
+    // console.log(e.target);
+    // console.log(e.target.textContent);
+    // console.log(e.target.id);
+    // console.log(e.target.key);
     setAppSection(e.target.textContent);
   };
 
@@ -190,74 +103,80 @@ export default function PersistentDrawerLeft() {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
+            className={clsx(classes.menuButton, {
+              [classes.hide]: open,
+            })}
           >
-            <MenuIcon />
+            <Menu />
           </IconButton>
           <Typography variant="h6" noWrap>
-          <div><b>Glasses Tracker | </b>  {appSection} </div>   
-          
-          
+            Glasses Tracker | 
           </Typography>
+          <Select               
+              value={'Friends of ASAPROSAR'}
+              classes={{
+                root: classes.whiteColor,
+                icon: classes.whiteColor
+              }} > 
+            <option value={'Friends of ASAPROSAR'}>Friends of ASAPROSAR</option>
+            {/* <option value={true}>another one</option> */}
+
+          </Select>
+          <div id='something' style={{display : 'flex', flex: '1', width: '100%', alignItems: 'flex-end', justifyContent: 'flex-end'}}>
+            <IconButton>
+              <Avatar>D</Avatar>
+            </IconButton>
+            </div>
+          {/* <Avatar>D</Avatar> */}
         </Toolbar>
       </AppBar>
       <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        docked={false}
-        open={open}
+        variant="permanent"
+        className={clsx(classes.drawer, {
+          [classes.drawerOpen]: open,
+          [classes.drawerClose]: !open,
+        })}
         classes={{
-          paper: classes.drawerPaper,
+          paper: clsx({
+            [classes.drawerOpen]: open,
+            [classes.drawerClose]: !open,
+          }),
         }}
       >
-        <div className={classes.drawerHeader}>
+        <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
           </IconButton>
         </div>
         <Divider />
-        <div className={classes.orgSection}>
-          <IconButton onClick={(e) => {setAppSection('Organization')}} ><BusinessIcon /></IconButton>
-          El Salvador Glasses
-        </div>
-        <Divider />
-        <div className={classes.usersSection}>
-          <IconButton onClick={(e) => {setAppSection('Profile')}} ><AccountCircleIcon/></IconButton>
-            bobby
-          <IconButton><ExitToAppIcon /></IconButton>
-        </div>
-        <Divider />
         <List>
-            <ListItem button key='Search' onClick={handleSidePannelClick}>
-              <ListItemIcon className={classes.listItemDisable} ><SearchIcon /></ListItemIcon>
+        <ListItem button key='Search' onClick={handleSidePannelClick}>
+              <ListItemIcon className={classes.listItemDisable} ><Search /></ListItemIcon>
               <ListItemText primary='Search' onClick={handleSidePannelClick}/>
             </ListItem>
             <ListItem button key='Add' onClick={handleSidePannelClick}>
-              <ListItemIcon><AddCircleOutlineIcon /></ListItemIcon>
+              <ListItemIcon><AddCircleOutline /></ListItemIcon>
               <ListItemText primary='Add' />
             </ListItem>
             <ListItem button key='Analysis' onClick={handleSidePannelClick}>
-              <ListItemIcon ><AssessmentIcon /></ListItemIcon>
+              <ListItemIcon ><Assessment /></ListItemIcon>
               <ListItemText primary='Analysis' />
             </ListItem>
         </List>
         <Divider />
         <List>
-            <ListItem button key='Admin Settings' onClick={handleSidePannelClick}>
-              <ListItemIcon disabled ><SettingsIcon /></ListItemIcon>
+        <ListItem button key='Admin Settings' onClick={handleSidePannelClick}>
+              <ListItemIcon disabled ><Settings /></ListItemIcon>
               <ListItemText disabled primary='Admin Settings' />
             </ListItem>
         </List>
       </Drawer>
-      <div 
-        className={clsx(classes.content, {
-          [classes.contentShift]: open,
-        })}
-      >
-      {RenderAppSection(appSection)}
-        
-      </div>
+      <main className={classes.content}>
+        {/* <div className={classes.toolbar} /> */}
+        {RenderAppSection(appSection)}
+          {/* <Add/> */}
+       
+      </main>
     </div>
   );
 }
