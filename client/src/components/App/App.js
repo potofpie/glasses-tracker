@@ -19,11 +19,11 @@ function App() {
         <div className="App">
             <Router>
               <Switch>
-                <PublicRoute exact path="/loading" component={Loading}/>
-                <PublicRoute exact path="/signup" component={SignUp}/>
-                <PublicRoute exact path="/login" component={Login}/>
-                <PublicRoute exact path="/reset" component={Reset}/>
-                <PrivateRoute path="/" component={HomePage}/>
+                <PublicRoute exact={true} path="/loading" component={Loading}/>
+                <PublicRoute exact={true} path="/signup" component={SignUp}/>
+                <PublicRoute exact={true} path="/login" component={Login}/>
+                <PublicRoute exact={true} path="/reset" component={Reset}/>
+                <PrivateRoute exact={true} path="/" component={HomePage}/>
               </Switch>
           </Router>
         </div>

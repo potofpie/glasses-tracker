@@ -1,6 +1,7 @@
 import './AdminSettings.css';
 import React from 'react';
-import LabelIcon from '../../../CustomIcons/LabelIcon'
+import LabelIcon from '@material-ui/icons/Label';
+import BusinessIcon from '@material-ui/icons/Business';
 import {   
         InputAdornment, 
         TextField, 
@@ -11,6 +12,7 @@ import {
 function AdminSettings() {
   return (
     <div className="Add">
+      <BusinessIcon style={{fontSize: '100px'}}/>
       <div className="AdminSettings-title">
         Change organization settings here!
       </div>

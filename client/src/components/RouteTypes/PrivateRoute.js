@@ -8,7 +8,7 @@ function PrivateRoute(props) {
     const {user} =  useAuth();
     return (
     <>
-        {user ? <Route path={props.path} component={props.component}/> : <Redirect to="/login" /> }
+        {user ? <Route exact={props.exact} path={props.path} component={props.component}/> : <Redirect to="/login" /> }
     </>  
     );
 }

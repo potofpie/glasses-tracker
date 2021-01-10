@@ -12,7 +12,7 @@ function PublicRoute(props) {
       user ? 
         <Redirect to="/" /> 
         : 
-        <Route path={props.path} component={props.component}/>
+        <Route exact={props.exact} path={props.path} component={props.component}/>
     }
     </>  
   );
