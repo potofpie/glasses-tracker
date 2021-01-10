@@ -14,8 +14,10 @@ import GoogleIcon from '../../CustomIcons/GoogleIcon';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import React, {useState} from 'react';
-// import firebase from '../.././../utils/firebase';
-
+import { useAuth } from '../../../utils/auth/Auth-context'
+import {
+  withRouter
+} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -23,10 +25,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function Login() {
+
+
+function Login(props) {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  const {login} = useAuth();
   const classes = useStyles();
+  let onLogin = () => {
+    login(email,password)
+    props.history.push('/')
+  }
 
   return (
     <div className="Login">
@@ -57,7 +66,7 @@ function Login() {
         variant="contained"
         color="default"
         className={classes.button}
-        // startIcon={<GoogleIcon size='20px' />}
+        onClick={onLogin}
       >
         Sign in</Button>
         OR
@@ -77,11 +86,9 @@ function Login() {
           I need an account! 
         </Link>
       </Typography>
-        
       </div>
 
     </div>
   );
 }
-
-export default Login;
+export default withRouter(Login);

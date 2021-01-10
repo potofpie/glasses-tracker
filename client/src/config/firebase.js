@@ -1,8 +1,9 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+// import "firebase/storage";
 
-export const firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyCBhUPRorNHJJcQEH81m6a6S5K-d010n00",
     authDomain: "glasses-tracker.firebaseapp.com",
     databaseURL: "https://glasses-tracker-default-rtdb.firebaseio.com",
@@ -13,8 +14,13 @@ export const firebaseConfig = {
     measurementId: "G-RQFH7YXT6J"
   };
 
+firebase.initializeApp(firebaseConfig)
 
-module.exports = {
-  auth : firebase.auth(),
-  db : firebase.firestore()
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+
+export  {
+  auth,
+  db
 }

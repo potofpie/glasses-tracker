@@ -1,4 +1,4 @@
-.Axdd {
+.Search {
   display: flex;
   flex: 1;
 
@@ -9,12 +9,36 @@
   padding-bottom: 20px;
 }
 
-.Adxd-title {
-  /* width: 50%; */
+.Search-title {
+  margin: 15px; 
   font-size: 20px;
 }
 
-.Adxd-field {
+.Search-field {
+  width: 50%;
+  margin: 15px; 
+}
+
+
+.Search-ODOS-field {
   width: 50%;
   margin: 10px; 
+  
+}
+
+
+.Search-ODOS{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .Search-field {
+    width: 85%;
+  }
+  .Search-ODOS {
+    width: 85%;
+  }
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
+import { useAuth } from '../../utils/auth/Auth-context'
+
 import { 
         useTheme,
         Drawer,
@@ -27,8 +29,11 @@ import {
         Settings
       } from '@material-ui/icons'
 
+
+      
 import {Add} from './Sections/Add';
 import {Search as SearchTab} from './Sections/Search';
+import {Analysis} from './Sections/Analysis';
 import {useStyles} from './css';
 
       
@@ -44,7 +49,7 @@ function RenderAppSection(appSection) {
       return <Add/>
       break;
     case 'Analysis':
-      return 'Analysis'
+      return <Analysis/>
       break;
     case 'Profile':
       return 'Profile'
@@ -69,14 +74,10 @@ export default function NewHomePage() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const {logout} = useAuth();
   const [appSection, setAppSection] = React.useState('Add');
 
   const handleSidePannelClick = (e) => {
-    // console.log(e);
-    // console.log(e.target);
-    // console.log(e.target.textContent);
-    // console.log(e.target.id);
-    // console.log(e.target.key);
     setAppSection(e.target.textContent);
   };
 
@@ -123,7 +124,7 @@ export default function NewHomePage() {
 
           </Select>
           <div id='something' style={{display : 'flex', flex: '1', width: '100%', alignItems: 'flex-end', justifyContent: 'flex-end'}}>
-            <IconButton>
+            <IconButton onClick={logout}>
               <Avatar>D</Avatar>
             </IconButton>
             </div>

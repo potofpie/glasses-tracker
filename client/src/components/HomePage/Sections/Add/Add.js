@@ -13,7 +13,6 @@ import TextileIcon from '../../../CustomIcons/TextileIcon';
 import LabelIcon from '../../../CustomIcons/LabelIcon';
 
 
-
 function Add() {
   const [SKU, setSKU] = useState();
   const [size, setSize] = useState();
@@ -52,7 +51,8 @@ function Add() {
         label="SKU *" 
         variant="outlined"
         InputProps={{
-          startAdornment: <InputAdornment position="start"><LabelIcon size={20} /></InputAdornment>,
+          startAdornment: <InputAdornment  
+        position="start"><LabelIcon size={15} /></InputAdornment>,
         }}
        />
       <Autocomplete

@@ -1,0 +1,36 @@
+.Analysis {
+  display: flex;
+  flex: 1;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.Analysis-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height: 200px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  width: 150px;
+}
+
+.Analysis-card-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height: 200px;
+  background-color: #fff;
+  border: 1px dashed black;
+  flex-wrap: wrap;
+  /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
+  width: 150px;
+}
