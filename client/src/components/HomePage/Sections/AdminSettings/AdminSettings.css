@@ -1,0 +1,44 @@
+.AdminSettings {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+ .AdminSettings-title {
+  margin: 15px; 
+  font-size: 20px;
+}
+
+/*
+.Add-field {
+  width: 50%;
+  margin: 15px; 
+}
+
+
+.Add-ODOS-field {
+  width: 50%;
+  margin: 10px; 
+  
+}
+
+
+.Add-ODOS{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .Add-field {
+    width: 85%;
+  }
+  .Add-ODOS {
+    width: 85%;
+  }
+} */

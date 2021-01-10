@@ -2,6 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { useAuth } from '../../utils/auth/Auth-context'
 
+
 import { 
         useTheme,
         Drawer,
@@ -16,7 +17,9 @@ import {
         ListItemIcon,
         ListItemText,
         Avatar,
-        Select
+        Select,
+        Breadcrumbs,
+        Link
       } from '@material-ui/core';
 
 import {
@@ -33,6 +36,7 @@ import {
       
 import {Add} from './Sections/Add';
 import {Search as SearchTab} from './Sections/Search';
+import {AdminSettings} from './Sections/AdminSettings';
 import {Analysis} from './Sections/Analysis';
 import {useStyles} from './css';
 
@@ -44,38 +48,31 @@ function RenderAppSection(appSection) {
   switch (appSection) {
     case 'Search':
       return <SearchTab/>
-      break;
     case 'Add':
       return <Add/>
-      break;
     case 'Analysis':
       return <Analysis/>
-      break;
     case 'Profile':
       return 'Profile'
-      break;
     case 'Organization':
       return 'Organization'
-      break;
     case 'Admin Settings':
-      return 'Admin Settings'
-      break;
+      return <AdminSettings/>
     default:
       return 'Error'
-      break;
+
   }
 }
 
-const drawerWidth = 240;
 
 
-
-export default function NewHomePage() {
+export default function HomePage() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const {logout} = useAuth();
-  const [appSection, setAppSection] = React.useState('Add');
+  const {logout,user} = useAuth();
+  const [appSection, setAppSection] = React.useState('Search');
+
 
   const handleSidePannelClick = (e) => {
     setAppSection(e.target.textContent);
@@ -125,10 +122,9 @@ export default function NewHomePage() {
           </Select>
           <div id='something' style={{display : 'flex', flex: '1', width: '100%', alignItems: 'flex-end', justifyContent: 'flex-end'}}>
             <IconButton onClick={logout}>
-              <Avatar>D</Avatar>
+              <Avatar>{user.displayName[0].toUpperCase()}</Avatar>
             </IconButton>
             </div>
-          {/* <Avatar>D</Avatar> */}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -173,10 +169,13 @@ export default function NewHomePage() {
         </List>
       </Drawer>
       <main className={classes.content}>
-        {/* <div className={classes.toolbar} /> */}
+        <Breadcrumbs style={{padding : '10px', borderBottom: '1px solid rgba(0,0,0,0.1)', backgroundColor: 'rgba(0,0,0,0.1)'  }}>
+          <Link color="inherit" href="/" >
+            {appSection}
+          </Link>
+          {/* <Typography color="textPrimary">{appSection}</Typography> */}
+        </Breadcrumbs>
         {RenderAppSection(appSection)}
-          {/* <Add/> */}
-       
       </main>
     </div>
   );

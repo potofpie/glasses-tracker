@@ -1,7 +1,7 @@
 .Analysis {
   display: flex;
   flex: 1;
-
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
@@ -10,6 +10,7 @@
 }
 
 .Analysis-card {
+  margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +22,14 @@
   width: 150px;
 }
 
+.Analysis-card:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.2);
+}
+
+
 .Analysis-card-add {
+  margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,6 +39,11 @@
   background-color: #fff;
   border: 1px dashed black;
   flex-wrap: wrap;
-  /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
   width: 150px;
 }
+
+.Analysis-card-add:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.025);
+}
+

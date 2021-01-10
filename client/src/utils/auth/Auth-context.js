@@ -4,7 +4,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  
+
 
   const isInitialized = () => {
 		return new Promise(resolve => {
@@ -28,18 +28,20 @@ export const AuthProvider = ({ children }) => {
     }
 
   }
-
-  const signup = async (email, password, repassword) => {
+  const sendResetEmail = async (email) => {
+    await auth.sendPasswordResetEmail(email)
+  }
+  const signup = async (name, email, password, repassword) => {
     try {
       if(password !== repassword){
         throw Error('Password do not match')
       }
-      await auth.signInWithEmailAndPassword(email, password)
+      await auth.createUserWithEmailAndPassword(email, password)
+      return auth.currentUser.updateProfile({displayName : name})
     } catch(error){
       alert(error)
     }
   }
-
 
   useEffect(() => {
     auth.onAuthStateChanged(setUser);
@@ -51,6 +53,7 @@ export const AuthProvider = ({ children }) => {
       auth,
       signup,
       login,
+      sendResetEmail,
       logout,
       isInitialized
     }}>{children}</AuthContext.Provider>

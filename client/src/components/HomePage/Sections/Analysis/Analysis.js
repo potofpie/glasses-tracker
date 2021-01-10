@@ -2,6 +2,7 @@ import './Analysis.css';
 import React  from 'react';
 
 
+
 function Analysis() {
   return (
     <div className="Analysis">

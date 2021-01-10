@@ -1,19 +1,16 @@
-.Login {
+.Loading {
   display: flex;
   flex: 1;
-  flex-direction: row;
+  width: 100%;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   /* background-color: whitesmoke; */
   background-color: #3f51b5;
 }
 
-.Login-field {
-    width: 80%;
-    margin: 15px; 
-}
 
-.Login-card {
+.Loading-card {
   display: flex;
   padding: 10px;
   flex-direction: column;
