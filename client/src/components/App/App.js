@@ -1,5 +1,6 @@
 import './App.css';
 import { AuthProvider } from '../../utils/auth/Auth-context';
+import { OrganizationsContextProvider } from '../../utils/data/Organizations-context';
 import { PrivateRoute, PublicRoute } from '../RouteTypes';
 import  { HomePage } from '../HomePage';
 import  { Login } from '../AuthenticationPages/Login';
@@ -15,7 +16,8 @@ import {
 
 function App() {
   return (
-      <AuthProvider>
+    <AuthProvider>
+      <OrganizationsContextProvider>
         <div className="App">
             <Router>
               <Switch>
@@ -27,7 +29,8 @@ function App() {
               </Switch>
           </Router>
         </div>
-      </AuthProvider>
+      </OrganizationsContextProvider>
+    </AuthProvider>
   );
 }
 

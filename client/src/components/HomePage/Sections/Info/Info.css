@@ -1,0 +1,15 @@
+.Info {
+  display: flex;
+  flex: 1;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.Info-title {
+  margin: 15px; 
+  font-size: 30px;
+}

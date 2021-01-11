@@ -1,7 +1,8 @@
 import './AdminSettings.css';
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import LabelIcon from '@material-ui/icons/Label';
 import BusinessIcon from '@material-ui/icons/Business';
+import {db} from '../../../../config/firebase' 
 import {   
         InputAdornment, 
         TextField, 
@@ -9,13 +10,28 @@ import {
       } from '@material-ui/core';
 
 
-function AdminSettings() {
+function AdminSettings(props) {
+  const [orgObject,setOrgObject] = useState(null)
+  // const organization = db.collection('organizations').get(props.selectedOrganization)
+  // console.log(organization)
+  // useEffect(()=> {
+  //   if(!orgObject){
+  //     setOrgObject(
+  //         db.collection('organizations')
+  //         .get(props.selectedOrganization)
+  //         .data()
+  //       )
+  //   }
+  // })
+  
+  
   return (
     <div className="Add">
       <BusinessIcon style={{fontSize: '100px'}}/>
       <div className="AdminSettings-title">
         Change organization settings here!
       </div>
+      {/* {orgObject.name} */}
       <TextField 
             className='Search-field'
             style={{

@@ -1,16 +1,18 @@
 import React, { useEffect, useState, useContext, createContext } from "react";
 import {auth} from "../../config/firebase";
+
+
+export const currentUser = auth.currentUser;
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-
-  const isInitialized = () => {
-		return new Promise(resolve => {
-			auth.onAuthStateChanged(resolve)
-		})
-  }
+  // const isInitialized = () => {
+	// 	return new Promise(resolve => {
+	// 		auth.onAuthStateChanged(resolve)
+	// 	})
+  // }
   
   const login = async (email, password) => {
     try {
@@ -44,7 +46,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    auth.onAuthStateChanged(setUser);
+    auth.onAuthStateChanged(() => setUser(auth.currentUser));
   }, []);
 
   return (
@@ -55,7 +57,7 @@ export const AuthProvider = ({ children }) => {
       login,
       sendResetEmail,
       logout,
-      isInitialized
+      // isInitialized
     }}>{children}</AuthContext.Provider>
   );
 };

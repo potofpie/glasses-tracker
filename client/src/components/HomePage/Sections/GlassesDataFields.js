@@ -111,7 +111,7 @@ function GlassesDataFields(props) {
       />
       <div className='Search-ODOS'  >
         <TextField className='Search-ODOS-field'
-        style={{ width: '40%' }} 
+        style={{ width: '45%' }} 
           id="outlined-basic" 
           variant="outlined"
           onChange={(e) => setODSphere(e.target.value)}
@@ -123,7 +123,7 @@ function GlassesDataFields(props) {
         />
         <TextField 
           className='Search-ODOS-field'
-          style={{ width: '40%' }}
+          style={{ width: '45%' }}
           onChange={(e) => setOSSphere(e.target.value)}
           id="outlined-basic" 
           variant="outlined" 
@@ -136,7 +136,7 @@ function GlassesDataFields(props) {
       </div>
       <div className='Search-ODOS'  >
         <TextField className='Search-ODOS-field' 
-        style={{ width: '40%' }}
+        style={{ width: '45%' }}
           id="outlined-basic" 
           variant="outlined"
           onChange={(e) => setODCylinder(e.target.value)}
@@ -147,7 +147,7 @@ function GlassesDataFields(props) {
           label="Cylinder *"
         />
         <TextField className='Search-ODOS-field'
-        style={{ width: '40%' }} 
+        style={{ width: '45%' }} 
           id="outlined-basic" 
           variant="outlined" 
           onChange={(e) => setOSCylinder(e.target.value)}
@@ -160,7 +160,7 @@ function GlassesDataFields(props) {
       </div>
       <div className='Search-ODOS'  >
         <TextField className='Search-ODOS-field' 
-        style={{ width: '40%' }} 
+        style={{ width: '45%' }} 
           id="outlined-basic" 
           variant="outlined"
           onChange={(e) => setODAxis(e.target.value)}
@@ -171,7 +171,7 @@ function GlassesDataFields(props) {
           label="Axis *"
         />
         <TextField 
-          style={{ width: '40%' }} 
+          style={{ width: '45%' }} 
           className='Search-ODOS-field' 
           id="outlined-basic" 
           variant="outlined" 
@@ -185,7 +185,7 @@ function GlassesDataFields(props) {
       </div>
       <div className='Search-ODOS'  >
         <TextField className='Search-ODOS-field' 
-        style={{ width: '40%' }} 
+        style={{ width: '45%' }} 
           id="outlined-basic"
           variant="outlined"
           onChange={(e) => setODAdd(e.target.value)}
@@ -196,7 +196,7 @@ function GlassesDataFields(props) {
           label="Add *"
         />
         <TextField className='Search-ODOS-field' 
-        style={{ width: '40%' }} 
+        style={{ width: '45%' }} 
           id="outlined-basic" 
           variant="outlined"
           onChange={(e) => setOSAdd(e.target.value)}
