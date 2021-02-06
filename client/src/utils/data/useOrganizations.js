@@ -4,11 +4,11 @@ import {db} from "../../config/firebase";
 
 export const useOrganizations = () => {
   const {user} = useAuth();
-  const [organizations, setOrganizations] = useState([]);
+  const [organizations, setOrganizations] = useState(null);
     useEffect(() => {
         if(user){
           let unsubsribe = db.collection("organizations")
-          // .where('users', "array-contains", 'Xg9HgEk7r4gLTdOl2fl00GSP0vG2');
+          .where('users', "array-contains", user.uid);
           unsubsribe = unsubsribe.onSnapshot( snapshot => {
             const newOrganizations = snapshot.docs.map( organization => (
               {

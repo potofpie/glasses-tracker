@@ -41,6 +41,7 @@ import {
 
       
 import {Add} from './Sections/Add';
+import {Results} from './Sections/Results';
 import {Info} from './Sections/Info';
 import {Search as SearchTab} from './Sections/Search';
 import {AdminSettings} from './Sections/AdminSettings';
@@ -60,38 +61,44 @@ export default function HomePage() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const {logout,user} = useAuth();
-  const [appSection, setAppSection] = React.useState('Info');
+  const [appSection, setAppSection] = React.useState('Results');
   const {organizations}  = useOrganizationsValue();
   const [selectedOrganization, setSelectedOrganization]  = useState(null);
 
   function RenderAppSection(appSection) {
-    switch (appSection) {
-      case 'Info':
-          return <Info selectedOrganization={selectedOrganization}/>
-      case 'Search':
-        return <SearchTab/>
-      case 'Add':
-        return <Add/>
-      case 'Analysis':
-        return <Analysis/>
-      case 'Profile':
-        return 'Profile'
-      case 'Admin Settings':
-        return <AdminSettings selectedOrganization={selectedOrganization}/>
-      default:
-        return 'Error'
-  
+    if(!organizations){
+      return "Loading!"
+    }
+    if(selectedOrganization && organizations.length){
+      switch (appSection) {
+        case 'Info':
+            return <Info selectedOrganization={selectedOrganization}/>
+        case 'Search':
+          return <SearchTab/>
+        case 'Results':
+            return <Results selectedOrganization={selectedOrganization}/>
+        case 'Add':
+          return <Add selectedOrganization={selectedOrganization}/>
+        case 'Analysis':
+          return <Analysis/>
+        case 'Profile':
+          return 'Profile'
+        case 'Admin Settings':
+          return <AdminSettings selectedOrganization={selectedOrganization}/>
+        default:
+          return 'Error'
+      }
+    }
+    else{
+      return "Please contact the system administator to add your account to an organization!"
     }
   }
-
-
   useEffect(()=> {
-    if(!selectedOrganization){
-      setSelectedOrganization(organizations.length ? organizations[0].id : null)
+    console.log(organizations);
+    if(!selectedOrganization && organizations ){
+      setSelectedOrganization(organizations.length ? organizations[0] : null)
     }
   })
-
-
   const handleSidePannelClick = (text) => {
     setAppSection(text);
   };
@@ -127,26 +134,21 @@ export default function HomePage() {
           <Typography variant="h6" noWrap>
             Glasses Tracker | 
           </Typography>
-          {/* <Select               
-              value={selectedOrganization}
-              onChange={e => console.log(e.target.value)}
-              classes={{
-                root: classes.whiteColor,
-                icon: classes.whiteColor
-              }} > 
-            {organizations.map(o => <option value={o.id}>{o.name}</option>)} 
-          </Select> */}
           <Autocomplete
-            onChange={(e,v) => setSelectedOrganization(v.id)}
-            // value={selectedOrganization}
+            //.MuiOutlinedInput-notchedOutline
+            //MuiAutocomplete-inputRoot[
+            // MuiButtonBase-root
+            onChange={(e,v) => setSelectedOrganization(v)}
+            value={selectedOrganization}
             disableClearable={true}
             defaultValue={selectedOrganization}
             options={organizations}
             getOptionLabel={(option) => option.name}
+            getOptionSelected={(option) => option.name}
             style={{width:'30%', marginLeft: '10px',}}
             color='white'
             size='small'
-            renderInput={(params) => <TextField  {...params} variant="outlined" color='white'/>}
+            renderInput={(params) => <TextField inputProps={{ style: {color: 'white'}}} {...params} variant="outlined" color='white'/>}
           />
           <div id='something' style={{display : 'flex', flex: '1', width: '100%', alignItems: 'flex-end', justifyContent: 'flex-end'}}>
             <IconButton onClick={logout}>

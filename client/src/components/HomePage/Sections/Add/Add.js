@@ -4,9 +4,12 @@ import {
          Button
       } from '@material-ui/core';
 import GlassesDataFields from '../GlassesDataFields' 
+import {addGlasses} from '../../../../api_actions/index';
+import { useAuth } from '../../../../utils/auth/Auth-context'
 
 
-function Add() {
+function Add(props) {
+  const {user} = useAuth();
   const [SKU, setSKU] = useState();
   const [size, setSize] = useState();
   const [appearance, setAppearance] = useState();
@@ -62,7 +65,23 @@ function Add() {
         Add a new pair of glasses!
       </div>
       <GlassesDataFields getters={getters} setters={setters} showSKU={true} />
-      <Button style={{ width: '50%', margin: '10px' }} color='primary' variant='contained' >Save </Button>
+      <Button style={{ width: '50%', margin: '10px' }} color='primary' variant='contained' onClick={() => addGlasses({
+          uid : user,
+          organizationId : props.selectedOrganization.id,
+          SKU,
+          size, 
+          appearance,
+          lensType,
+          material,
+          ODSphere,
+          OSSphere,
+          ODCylinder,
+          OSCylinder,
+          ODAxis,
+          OSAxis,
+          ODAdd,
+          OSAdd
+      })} >Save </Button>
       <Button style={{ width: '50%', margin: '10px' }} color='secondary' variant='contained' >Cancel</Button>
     </div>
   );

@@ -13,7 +13,7 @@ function Info(props) {
         Welcome {auth.currentUser.displayName}, to the glasses-tracker!
       </div>
       <p>
-        Currently sellected is {props.selectedOrganization}!
+        Currently sellected is <b>{props.selectedOrganization.name}</b>!
       </p>
       <p>
         This sites is made to help chairty organizations track related to vision!
@@ -27,7 +27,6 @@ function Info(props) {
       <p>
         <b>Source Code:</b> <a target='_blank' href='https://github.com/potofpie/glasses-tracker'>Github</a> 
       </p>
-
     </div>
   );
 }
