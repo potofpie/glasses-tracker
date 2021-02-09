@@ -26,6 +26,10 @@
   
 }
 
+.Result {
+  font-weight: 900;
+}
+
 
 .Add-ODOS{
   display: flex;

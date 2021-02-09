@@ -3,10 +3,11 @@ import React
 from 'react';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import clsx from 'clsx';
 import { useAuth } from '../../utils/auth/Auth-context'
 import { useOrganizationsValue } from '../../utils/data/Organizations-context'
-
+import { makeStyles } from '@material-ui/core/styles';
 
 import { 
         useTheme,
@@ -46,12 +47,21 @@ import {Info} from './Sections/Info';
 import {Search as SearchTab} from './Sections/Search';
 import {AdminSettings} from './Sections/AdminSettings';
 import {Analysis} from './Sections/Analysis';
+import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
 import {useStyles} from './css';
 
       
 
 
-
+const useStyles2 = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
 
 
@@ -61,20 +71,28 @@ export default function HomePage() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const {logout,user} = useAuth();
-  const [appSection, setAppSection] = React.useState('Results');
+  const [appSection, setAppSection] = React.useState('Search');
   const {organizations}  = useOrganizationsValue();
   const [selectedOrganization, setSelectedOrganization]  = useState(null);
 
+
+  const classes2 = useStyles2();
+  // function Alert(props) {
+  //   return <MuiAlert elevation={6} variant="filled" {...props} />;
+  // }
+  
+
+
   function RenderAppSection(appSection) {
     if(!organizations){
-      return "Loading!"
+      return <CircularProgress/>
     }
     if(selectedOrganization && organizations.length){
       switch (appSection) {
         case 'Info':
             return <Info selectedOrganization={selectedOrganization}/>
         case 'Search':
-          return <SearchTab/>
+          return <SearchTab selectedOrganization={selectedOrganization}/>
         case 'Results':
             return <Results selectedOrganization={selectedOrganization}/>
         case 'Add':
@@ -208,6 +226,8 @@ export default function HomePage() {
             {appSection}
           </Link>
         </Breadcrumbs>
+          {true ? <Alert  severity="error">This is a error message!</Alert>  : <div style={{height:48}}/>}
+
         {RenderAppSection(appSection)}
       </main>
     </div>

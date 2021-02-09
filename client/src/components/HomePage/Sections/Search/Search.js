@@ -5,10 +5,13 @@ import {
   Button, 
   // TextField, 
 } from '@material-ui/core';
+import {searchGlasses} from '../../../../api_actions/index';
 import GlassesDataFields from '../GlassesDataFields' 
+import CircularProgress from '@material-ui/core/CircularProgress';
+import {Results} from "../Results";
 
 
-function Search() {
+function Search(props) {
   const [size, setSize] = useState(null);
   const [appearance, setAppearance] = useState(null);
   const [lensType, setLensType] = useState(null);
@@ -25,6 +28,9 @@ function Search() {
 
   const [ODAdd, setODAdd] = useState(null);
   const [OSAdd, setOSAdd] = useState(null);
+
+  const [searched, setSearched] = useState(false);
+  const [glasses, setGlasses] = useState([]);
   
 
   const getters = {
@@ -55,15 +61,62 @@ function Search() {
     setODAdd,
     setOSAdd
   }
-  return (
-    <div className="Search">
-      <div className="Search-title">
-        Search for the best mach of glasses!
+
+  if(!searched){
+    return (
+      <div className="Search">
+        <div className="Search-title">
+          Search for the best mach of glasses!
+        </div>
+        <GlassesDataFields getters={getters} setters={setters} showSKU={false} />
+        <Button style={{ width: '50%', margin: '10px' }} 
+        onClick={() => {
+          searchGlasses(
+            setGlasses,
+            {
+              uid : 'retefgds',
+              organizationId: props.selectedOrganization.id,
+              "glassesToMatch": {
+                size, 
+                appearance,
+                lensType,
+                material,
+                ODSphere,
+                OSSphere,
+                ODCylinder,
+                OSCylinder,
+                ODAxis,
+                OSAxis,
+                ODAdd,
+                OSAdd
+              }
+              })
+              setSearched(true);
+          }}
+          color='primary' variant='contained' >Search </Button>
       </div>
-      <GlassesDataFields getters={getters} setters={setters} showSKU={false} />
-      <Button style={{ width: '50%', margin: '10px' }} color='primary' variant='contained' >Search </Button>
-    </div>
-  );
+    );
+  } 
+  if(searched && !glasses.length){
+    return <CircularProgress/>
+  }
+  else {
+    return <Results glasses={glasses} 
+                    glassesToMatch={{
+                      size, 
+                      appearance,
+                      lensType,
+                      material,
+                      ODSphere,
+                      OSSphere,
+                      ODCylinder,
+                      OSCylinder,
+                      ODAxis,
+                      OSAxis,
+                      ODAdd,
+                      OSAdd
+                    }}/>
+  }
 }
 
 export default Search;

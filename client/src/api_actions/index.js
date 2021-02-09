@@ -22,6 +22,38 @@ const getGlasses = async (organizationId, setGlasses) => {
 }
 
 
+
+const searchGlasses = (setGlasses,{
+    uid,
+    organizationId,
+    glassesToMatch
+  }) => {
+    var axios = require('axios');
+    var data = JSON.stringify({
+        uid,
+        organizationId,
+        glassesToMatch,
+        page: 0
+      });
+    
+    var config = {
+        method: 'post',
+        url: 'https://us-central1-glasses-tracker.cloudfunctions.net/searchGlasses',
+        headers: { 
+            'Content-Type': 'application/json'
+        },
+        data : data
+    };
+    
+    axios(config)
+    .then(function (response) {
+        setGlasses(response.data.results);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });   
+}
+
 const addGlasses = ({
     uid,
     organizationId,
@@ -76,4 +108,4 @@ const addGlasses = ({
     });   
 }
 
-export {addGlasses, getGlasses }
+export {addGlasses, getGlasses, searchGlasses }
