@@ -73,7 +73,7 @@ function Results(props) {
   ];
 
     return (
-      <Paper style={{margin: '20px', height: '90%'}}>
+      <Paper style={{margin: '20px', height: '80%'}}>
         <DataGrid       
               columns={columns}
               rows={props.glasses}

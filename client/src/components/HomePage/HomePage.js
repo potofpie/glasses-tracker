@@ -149,9 +149,10 @@ export default function HomePage() {
           >
             <Menu />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          {/* <Typography variant="h6" noWrap>
             Glasses Tracker | 
-          </Typography>
+          </Typography> */}
+          <Typography variant="h6" color='textPrimary' style={{fontFamily: 'Comfortaa', wordSpacing: '-.3ch', color: 'white'}}> <b style={{fontFamily: 'Comfortaa'}}>lens </b>hash</Typography>
           <Autocomplete
             //.MuiOutlinedInput-notchedOutline
             //MuiAutocomplete-inputRoot[
@@ -226,8 +227,7 @@ export default function HomePage() {
             {appSection}
           </Link>
         </Breadcrumbs>
-          {true ? <Alert  severity="error">This is a error message!</Alert>  : <div style={{height:48}}/>}
-
+        {true ? <Alert  severity="error">This is a error message!</Alert>  : <div style={{height:48}}/>}
         {RenderAppSection(appSection)}
       </main>
     </div>
