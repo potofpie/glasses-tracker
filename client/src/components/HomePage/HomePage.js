@@ -7,6 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import clsx from 'clsx';
 import { useAuth } from '../../utils/auth/Auth-context'
 import { useOrganizationsValue } from '../../utils/data/Organizations-context'
+import { useAlertValue } from '../../utils/alert/Alert-context'
 import { makeStyles } from '@material-ui/core/styles';
 
 import { 
@@ -78,6 +79,7 @@ export default function HomePage() {
   const [open, setOpen] = React.useState(false);
   const {logout,user} = useAuth();
   const [appSection, setAppSection] = React.useState('Search');
+  const {alert, setAlert} = useAlertValue()
   const {organizations}  = useOrganizationsValue();
   const [selectedOrganization, setSelectedOrganization]  = useState(null);
 
@@ -234,7 +236,7 @@ export default function HomePage() {
             {appSection}
           </Link>
         </Breadcrumbs>
-        {true ? <Alert  severity="error">This is a error message!</Alert>  : <div style={{height:48}}/>}
+        {alert ? <Alert  severity="error">{alert}</Alert>  : <div style={{height:48}}/>}
         {RenderAppSection(appSection)}
       </main>
     </div>
