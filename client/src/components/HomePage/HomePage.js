@@ -54,15 +54,21 @@ import {useStyles} from './css';
       
 
 
-const useStyles2 = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    '& > * + *': {
-      marginTop: theme.spacing(2),
+const useStyles2 = makeStyles(theme => ({
+  inputRoot: {
+    color: "white",
+    "& .MuiSvgIcon-root": { color: "white"},
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: "white"
     },
-  },
+    "&:hover .MuiOutlinedInput-notchedOutline": {
+      borderColor: "white "
+    },
+    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "white"
+    }
+  }
 }));
-
 
 
 
@@ -164,10 +170,11 @@ export default function HomePage() {
             options={organizations}
             getOptionLabel={(option) => option.name}
             getOptionSelected={(option) => option.name}
-            style={{width:'30%', marginLeft: '10px',}}
+            classes={classes2}
+            style={{width:'30%', marginLeft: '10px', color: 'white'}}
             color='white'
             size='small'
-            renderInput={(params) => <TextField inputProps={{ style: {color: 'white'}}} {...params} variant="outlined" color='white'/>}
+            renderInput={(params) => <TextField color='white' inputProps={{ style: {backgroupColor: 'white'}}} {...params} variant="outlined"/>}
           />
           <div id='something' style={{display : 'flex', flex: '1', width: '100%', alignItems: 'flex-end', justifyContent: 'flex-end'}}>
             <IconButton onClick={logout}>
