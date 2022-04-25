@@ -1,6 +1,4 @@
-import React
-      ,{useState, useEffect} 
-from 'react';
+import React,{useState, useEffect} from 'react';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -24,9 +22,9 @@ import {
         ListItemIcon,
         ListItemText,
         Avatar,
-        Select,
         Breadcrumbs,
-        Link
+        Link,
+        Button
       } from '@material-ui/core';
 
 import {
@@ -48,8 +46,8 @@ import {Info} from './Sections/Info';
 import {Search as SearchTab} from './Sections/Search';
 import {AdminSettings} from './Sections/AdminSettings';
 import {Analysis} from './Sections/Analysis';
-import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
+import { useSpring, animated } from "react-spring";
 import {useStyles} from './css';
 
       
@@ -79,16 +77,11 @@ export default function HomePage() {
   const [open, setOpen] = React.useState(false);
   const {logout,user} = useAuth();
   const [appSection, setAppSection] = React.useState('Search');
-  const {alert, setAlert} = useAlertValue()
+  const {alert, setAlert, createAlert} = useAlertValue()
   const {organizations}  = useOrganizationsValue();
   const [selectedOrganization, setSelectedOrganization]  = useState(null);
-
-
+  const fadeInStyle = useSpring({opacity: alert ? 1 : 0})
   const classes2 = useStyles2();
-  // function Alert(props) {
-  //   return <MuiAlert elevation={6} variant="filled" {...props} />;
-  // }
-  
 
 
   function RenderAppSection(appSection) {
@@ -236,7 +229,8 @@ export default function HomePage() {
             {appSection}
           </Link>
         </Breadcrumbs>
-        {alert ? <Alert  severity="error">{alert}</Alert>  : <div style={{height:48}}/>}
+        <animated.div style={fadeInStyle}><Alert  severity="error">{alert}</Alert></animated.div>
+        <Button onClick={() => {createAlert("something bad happened!")}}>testing123</Button>
         {RenderAppSection(appSection)}
       </main>
     </div>

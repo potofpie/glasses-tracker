@@ -5,14 +5,16 @@ export const AlertContext = createContext();
 export const AlertContextProvider = ({children}) => {
   const {
     alert,
-    setAlert
+    setAlert,
+    createAlert
   } = useAlert();
 
   return (
     <AlertContext.Provider value={
           {
             alert,
-            setAlert
+            setAlert,
+            createAlert
           }
         }
     >
