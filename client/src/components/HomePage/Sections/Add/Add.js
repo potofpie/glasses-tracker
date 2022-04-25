@@ -8,25 +8,50 @@ import {addGlasses} from '../../../../api_actions/index';
 import { useAuth } from '../../../../utils/auth/Auth-context'
 
 
+const handleAdd = (createAlert,data) => {
+  try{
+    const fieldValidation = data.uid &&
+    data.organizationId &&
+    data.SKU &&
+    data.size && 
+    data.lensType &&
+    data.ODSphere &&
+    data.OSSphere &&
+    data.ODCylinder &&
+    data.OSCylinder &&
+    data.ODAxis &&
+    data.OSAxis &&
+    data.ODAdd &&
+    data.OSAdd;
+    if(!fieldValidation){
+      throw new Error("Please fill out all required fields before adding!")
+    }
+    addGlasses(createAlert, data)
+  }catch(e){
+    createAlert('warning', e.message)
+  }
+}
+
+
 function Add(props) {
   const {user} = useAuth();
-  const [SKU, setSKU] = useState();
-  const [size, setSize] = useState();
-  const [appearance, setAppearance] = useState();
-  const [lensType, setLensType] = useState();
-  const [material, setMaterial] = useState();
+  const [SKU, setSKU] = useState('');
+  const [size, setSize] = useState('');
+  const [appearance, setAppearance] = useState('');
+  const [lensType, setLensType] = useState('');
+  const [material, setMaterial] = useState('');
   
-  const [OSSphere, setOSSphere] = useState();
-  const [ODSphere, setODSphere] = useState();
+  const [OSSphere, setOSSphere] = useState('');
+  const [ODSphere, setODSphere] = useState('');
 
-  const [OSCylinder, setOSCylinder] = useState();
-  const [ODCylinder, setODCylinder] = useState();
+  const [OSCylinder, setOSCylinder] = useState('');
+  const [ODCylinder, setODCylinder] = useState('');
 
-  const [OSAxis, setOSAxis] = useState();
-  const [ODAxis, setODAxis] = useState();
+  const [OSAxis, setOSAxis] = useState('');
+  const [ODAxis, setODAxis] = useState('');
 
-  const [OSAdd, setOSAdd] = useState();
-  const [ODAdd, setODAdd] = useState();
+  const [OSAdd, setOSAdd] = useState('');
+  const [ODAdd, setODAdd] = useState('');
   
   const getters = {
     SKU,
@@ -65,7 +90,10 @@ function Add(props) {
         Add a new pair of glasses!
       </div>
       <GlassesDataFields getters={getters} setters={setters} showSKU={true} />
-      <Button style={{ width: '50%', margin: '10px' }} color='primary' variant='contained' onClick={() => addGlasses({
+      <Button style={{ width: '50%', margin: '10px' }} color='primary' variant='contained' onClick={() => 
+        handleAdd(
+        props.createAlert,
+        {
           uid : user,
           organizationId : props.selectedOrganization.id,
           SKU,
@@ -81,8 +109,7 @@ function Add(props) {
           OSAxis,
           ODAdd,
           OSAdd
-      })} >Save </Button>
-      <Button style={{ width: '50%', margin: '10px' }} color='secondary' variant='contained' >Cancel</Button>
+      })} >Add </Button>
     </div>
   );
 }

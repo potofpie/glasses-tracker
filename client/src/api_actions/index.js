@@ -1,42 +1,20 @@
-
-const getGlasses = async (organizationId, setGlasses) => {
-        var axios = require('axios');
-    var data = JSON.stringify({"uid":"csddcs","organizationId":organizationId,"page":0});
-
-    var config = {
-    method: 'post',
-    url: 'https://us-central1-glasses-tracker.cloudfunctions.net/getGlasses',
-    headers: { 
-        'Content-Type': 'application/json'
-    },
-    data : data
-    };
-
-    axios(config)
-    .then(function (response) {
-        setGlasses(response.data.results);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
-}
-
-
-
-const searchGlasses = (setGlasses,{
+let axios = require('axios');
+const searchGlasses = (
+  createAlert,
+  setGlasses,
+  {
     uid,
     organizationId,
     glassesToMatch
   }) => {
-    var axios = require('axios');
-    var data = JSON.stringify({
+    let data = JSON.stringify({
         uid,
         organizationId,
         glassesToMatch,
         page: 0
       });
     
-    var config = {
+    let request = {
         method: 'post',
         url: 'https://us-central1-glasses-tracker.cloudfunctions.net/searchGlasses',
         headers: { 
@@ -45,34 +23,18 @@ const searchGlasses = (setGlasses,{
         data : data
     };
     
-    axios(config)
+    axios(request)
     .then(function (response) {
         setGlasses(response.data.results);
     })
     .catch(function (error) {
-        console.log(error);
+        createAlert('error' ,error.toString());
     });   
 }
 
-const addGlasses = ({
-    uid,
-    organizationId,
-    SKU,
-    size, 
-    appearance,
-    lensType,
-    material,
-    ODSphere,
-    OSSphere,
-    ODCylinder,
-    OSCylinder,
-    ODAxis,
-    OSAxis,
-    ODAdd,
-    OSAdd
-  }) => {
-    var axios = require('axios');
-    var data = JSON.stringify({
+const addGlasses = (
+    createAlert,
+    {
         uid,
         organizationId,
         SKU,
@@ -88,9 +50,25 @@ const addGlasses = ({
         OSAxis,
         ODAdd,
         OSAdd
-      });
-    
-    var config = {
+  }) => {
+    let data = JSON.stringify({
+        uid,
+        organizationId,
+        SKU,
+        size, 
+        appearance,
+        lensType,
+        material,
+        ODSphere,
+        OSSphere,
+        ODCylinder,
+        OSCylinder,
+        ODAxis,
+        OSAxis,
+        ODAdd,
+        OSAdd
+        });
+    let request = {
         method: 'post',
         url: 'https://us-central1-glasses-tracker.cloudfunctions.net/addGlasses',
         headers: { 
@@ -98,14 +76,11 @@ const addGlasses = ({
         },
         data : data
     };
-    
-    axios(config)
-    .then(function (response) {
-        console.log(response.data);
+    axios(request).then(function (response) {
+        createAlert('success', `Added entry succesfully!`)
+    }).catch((e) => {
+        createAlert('error', `Panic and called Bobby: ${e.toString()}`)
     })
-    .catch(function (error) {
-        console.log(error);
-    });   
 }
 
-export {addGlasses, getGlasses, searchGlasses }
+export { addGlasses, searchGlasses }

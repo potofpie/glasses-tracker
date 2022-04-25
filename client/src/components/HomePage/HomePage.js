@@ -7,7 +7,6 @@ import { useAuth } from '../../utils/auth/Auth-context'
 import { useOrganizationsValue } from '../../utils/data/Organizations-context'
 import { useAlertValue } from '../../utils/alert/Alert-context'
 import { makeStyles } from '@material-ui/core/styles';
-
 import { 
         useTheme,
         Drawer,
@@ -26,7 +25,6 @@ import {
         Link,
         Button
       } from '@material-ui/core';
-
 import {
         ChevronLeft,
         ChevronRight,
@@ -47,7 +45,7 @@ import {Search as SearchTab} from './Sections/Search';
 import {AdminSettings} from './Sections/AdminSettings';
 import {Analysis} from './Sections/Analysis';
 import Alert from '@material-ui/lab/Alert';
-import { useSpring, animated } from "react-spring";
+// import { useSpring, animated } from "react-spring";
 import {useStyles} from './css';
 
       
@@ -80,7 +78,7 @@ export default function HomePage() {
   const {alert, setAlert, createAlert} = useAlertValue()
   const {organizations}  = useOrganizationsValue();
   const [selectedOrganization, setSelectedOrganization]  = useState(null);
-  const fadeInStyle = useSpring({opacity: alert ? 1 : 0})
+  // const fadeInStyle = useSpring({opacity: alert ? 1 : 0})
   const classes2 = useStyles2();
 
 
@@ -89,15 +87,16 @@ export default function HomePage() {
       return <CircularProgress/>
     }
     if(selectedOrganization && organizations.length){
+      let haveMatch = true;
       switch (appSection) {
         case 'Info':
-            return <Info selectedOrganization={selectedOrganization}/>
+            return <Info selectedOrganization={selectedOrganization} createAlert={createAlert}/>
         case 'Search':
-          return <SearchTab selectedOrganization={selectedOrganization}/>
+          return <SearchTab selectedOrganization={selectedOrganization} createAlert={createAlert}/>
         case 'Results':
-            return <Results selectedOrganization={selectedOrganization}/>
+            return <Results selectedOrganization={selectedOrganization} createAlert={createAlert}/>
         case 'Add':
-          return <Add selectedOrganization={selectedOrganization}/>
+          return <Add selectedOrganization={selectedOrganization} createAlert={createAlert}/>
         case 'Analysis':
           return <Analysis/>
         case 'Profile':
@@ -109,7 +108,7 @@ export default function HomePage() {
       }
     }
     else{
-      return "Please contact the system administator to add your account to an organization!"
+      return ""
     }
   }
   useEffect(()=> {
@@ -119,6 +118,7 @@ export default function HomePage() {
     }
   })
   const handleSidePannelClick = (text) => {
+    setAlert(null)
     setAppSection(text);
   };
 
@@ -150,14 +150,8 @@ export default function HomePage() {
           >
             <Menu />
           </IconButton>
-          {/* <Typography variant="h6" noWrap>
-            Glasses Tracker | 
-          </Typography> */}
           <Typography variant="h6" color='textPrimary' style={{fontFamily: 'Comfortaa', wordSpacing: '-.3ch', color: 'white'}}> <b style={{fontFamily: 'Comfortaa'}}>lens </b>hash</Typography>
           <Autocomplete
-            //.MuiOutlinedInput-notchedOutline
-            //MuiAutocomplete-inputRoot[
-            // MuiButtonBase-root
             onChange={(e,v) => setSelectedOrganization(v)}
             value={selectedOrganization}
             disableClearable={true}
@@ -229,8 +223,7 @@ export default function HomePage() {
             {appSection}
           </Link>
         </Breadcrumbs>
-        <animated.div style={fadeInStyle}><Alert  severity="error">{alert}</Alert></animated.div>
-        <Button onClick={() => {createAlert("something bad happened!")}}>testing123</Button>
+        { alert ? <Alert  severity={alert.type} >{alert.text}</Alert> : <div style={{height: 48, width: '100%'}}/>}
         {RenderAppSection(appSection)}
       </main>
     </div>

@@ -28,7 +28,7 @@ function Reset() {
     <div className="Reset">
       <div className="Reset-card ">
       <GlassesIcon size='100px' />
-      <Typography variant="h4" color='textPrimary'>Glasses Tracker</Typography>
+      <Typography variant="h4" color='textPrimary' style={{fontFamily: 'Comfortaa', wordSpacing: '-.3ch'}}> <b style={{fontFamily: 'Comfortaa'}}>lens </b>hash</Typography>
       <TextField 
         className='Login-field'
         onChange={(e) => {setEmail(e.target.value)}}

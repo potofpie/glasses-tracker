@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { 
+  Button,
          InputAdornment, 
          TextField, 
       } from '@material-ui/core';
@@ -9,23 +10,26 @@ import GenderIcon from '../../CustomIcons/GenderIcon';
 import MeasuringTapeIcon from '../../CustomIcons/MeasuringTapeIcon';
 import TextileIcon from '../../CustomIcons/TextileIcon';
 import LabelIcon from '../../CustomIcons/LabelIcon';
+import Switch from '@material-ui/core/Switch';
+import { validateOcularValue } from '../../../utils/field_validation/ocularValueValidation';
 
 function GlassesDataFields(props) {
-  // const {
-  //   sku,
-  //   size, 
-  //   appearance,
-  //   lensType,
-  //   material,
-  //   ODSphere,
-  //   OSSphere,
-  //   ODCylinder,
-  //   OSCylinder,
-  //   ODAxis,
-  //   OSAxis,
-  //   ODAdd,
-  //   OSAdd
-  // } = props.getters;
+  const [generateSKU, setGenerateSKU] =  useState(false)
+  const {
+    SKU,
+    size, 
+    appearance,
+    lensType,
+    material,
+    ODSphere,
+    OSSphere,
+    ODCylinder,
+    OSCylinder,
+    ODAxis,
+    OSAxis,
+    ODAdd,
+    OSAdd
+  } = props.getters;
 
   const {
     setSKU,
@@ -47,24 +51,29 @@ function GlassesDataFields(props) {
   return (
     <>
       {props.showSKU ?  
+        <div style={{display: 'flex', flexDirection: 'collumn', justifyContent: 'center'}} className='Search-field'>
         <TextField 
-            className='Search-field'
+            
             style={{
+            width: '100%',
             height: '40px',
-            margin: '15px'
+            marginRight: 10
+            
             }}
             inputProps={{
               style: { height: '3px'}
             }}
             onChange={(e) => setSKU(e.target.value)}
             id="outlined-basic" 
-            label="SKU *" 
+            label="SKU *"
+            disabled={generateSKU}
             variant="outlined"
+            value='somebillshit'
             InputProps={{
             startAdornment: <InputAdornment  
             position="start"><LabelIcon size={15} /></InputAdornment>,
             }}
-       />
+       /> <Switch onChange={() => setGenerateSKU(!generateSKU)} color='primary' /> </div>
        :
         null
        }
@@ -112,9 +121,11 @@ function GlassesDataFields(props) {
       <div className='Search-ODOS'  >
         <TextField className='Search-ODOS-field'
         style={{ width: '45%' }} 
-          id="outlined-basic" 
+          id="outlined-basic"
+          value={ODSphere}
           variant="outlined"
           onChange={(e) => setODSphere(e.target.value)}
+          onBlur={(e) => validateOcularValue('sphere', e.target.value, setODSphere, props.createAlert)}
           inputProps={{ step:.25, type: 'number', min: -20, max: 20, style: { height: '5px'}}}
           InputProps={{
               startAdornment: <InputAdornment position="start">OD</InputAdornment>,
@@ -125,6 +136,8 @@ function GlassesDataFields(props) {
           className='Search-ODOS-field'
           style={{ width: '45%' }}
           onChange={(e) => setOSSphere(e.target.value)}
+          onBlur={(e) => validateOcularValue('sphere', e.target.value, setOSSphere, props.createAlert)}
+          value={OSSphere}
           id="outlined-basic" 
           variant="outlined" 
           inputProps={{step:.25, type: 'number', min: -20, max: 20, style: { height: '5px'}}}
@@ -139,7 +152,9 @@ function GlassesDataFields(props) {
         style={{ width: '45%' }}
           id="outlined-basic" 
           variant="outlined"
+          value={ODCylinder}
           onChange={(e) => setODCylinder(e.target.value)}
+          onBlur={(e) => validateOcularValue('cylinder', e.target.value, setODCylinder, props.createAlert)}
           inputProps={{ step:.25, type: 'number', min: -6, max: 0, style: { height: '5px'}}}
           InputProps={{
             startAdornment: <InputAdornment position="start">OD</InputAdornment>,
@@ -150,7 +165,9 @@ function GlassesDataFields(props) {
         style={{ width: '45%' }} 
           id="outlined-basic" 
           variant="outlined" 
+          value={OSCylinder}
           onChange={(e) => setOSCylinder(e.target.value)}
+          onBlur={(e) => validateOcularValue('cylinder', e.target.value, setOSCylinder, props.createAlert)}
           inputProps={{ step:.25, type: 'number', min: -6, max: 0, style: { height: '5px'}}}
           InputProps={{
             startAdornment: <InputAdornment position="start">OS</InputAdornment>,
@@ -163,7 +180,9 @@ function GlassesDataFields(props) {
         style={{ width: '45%' }} 
           id="outlined-basic" 
           variant="outlined"
+          value={ODAxis}
           onChange={(e) => setODAxis(e.target.value)}
+          onBlur={(e) => validateOcularValue('axis', e.target.value, setODAxis, props.createAlert)}
           inputProps={{ step:1, type: 'number', min: 1, max: 180, style: { height: '5px'}}}
           InputProps={{
             startAdornment: <InputAdornment position="start">OD</InputAdornment>,
@@ -175,7 +194,9 @@ function GlassesDataFields(props) {
           className='Search-ODOS-field' 
           id="outlined-basic" 
           variant="outlined" 
+          value={OSAxis}
           onChange={(e) => setOSAxis(e.target.value)}
+          onBlur={(e) => validateOcularValue('axis', e.target.value, setOSAxis, props.createAlert)}
           inputProps={{step:1, type: 'number', min: 1, max: 180, style: { height: '5px'}}}
           InputProps={{
             startAdornment: <InputAdornment position="start">OS</InputAdornment>,
@@ -188,7 +209,9 @@ function GlassesDataFields(props) {
         style={{ width: '45%' }} 
           id="outlined-basic"
           variant="outlined"
+          value={ODAdd}
           onChange={(e) => setODAdd(e.target.value)}
+          onBlur={(e) => validateOcularValue('add', e.target.value, setODAdd, props.createAlert)}
           inputProps={{ step:.5, type: 'number', min: .5, max: 4, style: { height: '5px'}}}
           InputProps={{
             startAdornment: <InputAdornment position="start">OD</InputAdornment>,
@@ -199,7 +222,9 @@ function GlassesDataFields(props) {
         style={{ width: '45%' }} 
           id="outlined-basic" 
           variant="outlined"
-          onChange={(e) => setOSAdd(e.target.value)}
+          value={OSAdd}
+          onChange={(e) => {setOSAdd(e.target.value); console.log(OSAdd)}}
+          onBlur={(e) => validateOcularValue('add', e.target.value, setOSAdd, props.createAlert)}
           inputProps={{ step:.5, type: 'number', min: .5, max: 4, style: { height: '5px'}}}
           InputProps={{
             startAdornment: <InputAdornment position="start">OS</InputAdornment>,

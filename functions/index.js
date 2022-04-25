@@ -56,6 +56,8 @@ const compare = (saerchItem,a,b) => {
 }
 
 const cors = require('cors')({origin: true});
+
+//add check to see if sku exists already so not to overwrite data
 exports.addGlasses = functions.https.onRequest(async (req, res) => {
   cors(req, res, async () => {
     const { 
@@ -96,27 +98,6 @@ exports.addGlasses = functions.https.onRequest(async (req, res) => {
     res.json({result: `Message with ID: ${writeResult.id} added.`},200);
   })
 });
-
-// exports.getGlasses = functions.https.onRequest(async (req, res) => {
-//   cors(req, res, async () => {
-//     const {
-//       uid,
-//       organizationId,
-//       page
-//     } = req.body;
-//     const snapshot = await admin.firestore()
-//       .collection('organizations')
-//       .doc(organizationId)
-//       .collection('glasses_in_stock')
-//       .orderBy("size").get();
-//     const results = await snapshot.docs.map(doc => {
-//         let id =doc.id;
-//         return { id, ...doc.data()}
-//       }); 
-//     res.set('Access-Control-Allow-Origin', '*');
-//     res.json({results: results},200);
-//   })
-// });
 
 
 exports.searchGlasses = functions.https.onRequest(async (req, res) => {

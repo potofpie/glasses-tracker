@@ -11,23 +11,47 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import {Results} from "../Results";
 
 
+const handleSearch = (createAlert,data) => {
+  try{
+    const fieldValidation = 
+    data.uid &&
+    data.organizationId &&
+    data.glassesToMatch.size && 
+    data.glassesToMatch.lensType &&
+    data.glassesToMatch.ODSphere &&
+    data.glassesToMatch.OSSphere &&
+    data.glassesToMatch.ODCylinder &&
+    data.glassesToMatch.OSCylinder &&
+    data.glassesToMatch.ODAxis &&
+    data.glassesToMatch.OSAxis &&
+    data.glassesToMatch.ODAdd &&
+    data.glassesToMatch.OSAdd;
+    if(!fieldValidation){
+      throw new Error("Please fill out all required fields before adding!")
+    }
+    searchGlasses(createAlert, data)
+  }catch(e){
+    createAlert('warning', e.toString())
+  }
+}
+
 function Search(props) {
-  const [size, setSize] = useState(null);
-  const [appearance, setAppearance] = useState(null);
-  const [lensType, setLensType] = useState(null);
-  const [material, setMaterial] = useState(null);
+  const [size, setSize] = useState('');
+  const [appearance, setAppearance] = useState('');
+  const [lensType, setLensType] = useState('');
+  const [material, setMaterial] = useState('');
   
-  const [ODSphere, setODSphere] = useState(null);
-  const [OSSphere, setOSSphere] = useState(null);
+  const [ODSphere, setODSphere] = useState('');
+  const [OSSphere, setOSSphere] = useState('');
 
-  const [ODCylinder, setODCylinder] = useState(null);
-  const [OSCylinder, setOSCylinder] = useState(null);
+  const [ODCylinder, setODCylinder] = useState('');
+  const [OSCylinder, setOSCylinder] = useState('');
 
-  const [ODAxis, setODAxis] = useState(null);
-  const [OSAxis, setOSAxis] = useState(null);
+  const [ODAxis, setODAxis] = useState('');
+  const [OSAxis, setOSAxis] = useState('');
 
-  const [ODAdd, setODAdd] = useState(null);
-  const [OSAdd, setOSAdd] = useState(null);
+  const [ODAdd, setODAdd] = useState('');
+  const [OSAdd, setOSAdd] = useState('');
 
   const [searched, setSearched] = useState(false);
   const [glasses, setGlasses] = useState([]);
@@ -68,10 +92,12 @@ function Search(props) {
         <div className="Search-title">
           Search for the best mach of glasses!
         </div>
-        <GlassesDataFields getters={getters} setters={setters} showSKU={false} />
+        <GlassesDataFields createAlert={props.createAlert} getters={getters} setters={setters} showSKU={false} />
         <Button style={{ width: '50%', margin: '10px' }} 
         onClick={() => {
+          setSearched(true);
           searchGlasses(
+            props.createAlert,
             setGlasses,
             {
               uid : 'retefgds',
@@ -91,7 +117,7 @@ function Search(props) {
                 OSAdd
               }
               })
-              setSearched(true);
+              ;
           }}
           color='primary' variant='contained' >Search </Button>
       </div>

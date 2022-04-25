@@ -22,7 +22,6 @@
 
 .Search-ODOS-field {
   width: 50%;
-  margin: 10px; 
   
 }
 
@@ -31,7 +30,7 @@
   display: flex;
   justify-content: space-between;
   width: 50%;
-  margin: 10px;
+  margin: 5px;
 }
 
 @media only screen and (max-width: 600px) {
